@@ -10,20 +10,25 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import frc.robot.commands.ledCommand;
-import frc.robot.subsystems.ledSubsystem;
+import frc.robot.subsystems.Limelight;
 
 public class RobotContainer {
-  private ledSubsystem subsystem;
+  //private ledSubsystem subsystem;
+  private Limelight subsystem;
   private XboxController controller;
 
   public RobotContainer() {
-    subsystem = new ledSubsystem();
-    controller = new XboxController(0);
-    subsystem.setDefaultCommand(new ledCommand(subsystem, controller));
+    subsystem = new Limelight();
+    //controller = new XboxController(0);
+
+    //subsystem.setDefualtCommand(new Limelight());
+    //subsystem.setDefaultCommand(new ledCommand(subsystem, controller));
     configureBindings();
   }
 
-  private void configureBindings() {}
+  private void configureBindings() {
+
+  }
 
   public Command getAutonomousCommand() {
     return Commands.print("No autonomous command configured");
