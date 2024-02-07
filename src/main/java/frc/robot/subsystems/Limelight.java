@@ -26,18 +26,20 @@ public class Limelight extends SubsystemBase{
         double id = LimelightHelpers.getFiducialID("");
 
         
-        System.out.println();
-        System.out.println(LimelightHelpers.getTX(""));
-        System.out.println( LimelightHelpers.getTY(""));
-        System.out.println( LimelightHelpers.getTA(""));
-        System.out.println(id);
+        //System.out.println();
+        //System.out.println(LimelightHelpers.getTX(""));
+        //System.out.println( LimelightHelpers.getTY(""));
+        //System.out.println( LimelightHelpers.getTA(""));
+        System.out.println(LimelightHelpers.getBotPose_TargetSpace("")[0]);
+        //System.out.println(id);
 
 
         Crashboard.toDashboard("tx", tx.getDouble(0.0), "Limelight");
         Crashboard.toDashboard("ty", ty.getDouble(0.0), "Limelight");
         Crashboard.toDashboard("ta", ta.getDouble(0.0), "Limelight");
+        Crashboard.toDashboard("Pose", LimelightHelpers.getBotPose_TargetSpace("")[0], "Limelight");
 
-        //Thread.sleep(5000);
+        //Thread.sleep(50000);
     }
 
     public void periodic() {
