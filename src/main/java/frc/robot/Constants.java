@@ -1,5 +1,5 @@
 package frc.robot;
 
 public class Constants {
-    public static final int CANdleid = 20;
+    public static final int CANdleid = 40;
 }

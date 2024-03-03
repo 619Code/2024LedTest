@@ -1,30 +1,22 @@
 package frc.robot.commands;
 
-import com.ctre.phoenix.led.CANdle;
 
-import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.subsystems.ledSubsystem;
+import frc.robot.subsystems.LedSubsystem;
 
-import frc.robot.Constants;
 
-public class ledCommand extends Command {
-    private ledSubsystem subsystem;
-    private final XboxController controller;
+public class LedCommand extends Command {
+    private LedSubsystem subsystem;
 
-    public ledCommand(ledSubsystem subsystem, XboxController controller) {
+    public LedCommand(LedSubsystem subsystem) {
         this.subsystem = subsystem;
-        this.controller = controller;
+
+        addRequirements(subsystem);
     }
 
     @Override
     public void execute() {
-        if (controller.getAButtonPressed()){
-            subsystem.setColor(100, 255, 70);
-        }
-        else {
-            subsystem.setColor(255, 255, 255);
-        }
+        subsystem.setColor(100, 255, 70);
     }
     
 
