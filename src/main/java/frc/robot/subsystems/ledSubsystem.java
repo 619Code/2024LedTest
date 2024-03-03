@@ -5,7 +5,6 @@ import com.ctre.phoenix.led.CANdle;
 import com.ctre.phoenix.led.CANdle.LEDStripType;
 import com.ctre.phoenix.led.CANdle.VBatOutputMode;
 import com.ctre.phoenix.led.CANdleConfiguration;
-import com.ctre.phoenix.led.CANdleConfiguration;
 import com.ctre.phoenix.led.ColorFlowAnimation;
 import com.ctre.phoenix.led.ColorFlowAnimation.Direction;
 
@@ -13,28 +12,38 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 
-public class LedSubsystem extends SubsystemBase {
+public class ledSubsystem extends SubsystemBase {
     
     private CANdle candle;
-//    private final int ledCount = 8;
-//    private Animation currentAnimation = null;
+    private final int ledCount = 40;
+    private Animation currentAnimation = null;
 
 
-
-
-  public LedSubsystem() {
+  public ledSubsystem() {
         this.candle = new CANdle(Constants.CANdleid);
-   //     currentAnimation = new ColorFlowAnimation(0, 0, 255, 0, 0.7, ledCount, Direction.Forward);
+        currentAnimation = new ColorFlowAnimation(255, 0, 0, 255, 0.5, ledCount, Direction.Forward);
    
 
-        CANdleConfiguration configAll = new CANdleConfiguration();
-        configAll.statusLedOffWhenActive = true;
-        configAll.disableWhenLOS = false;
-        configAll.stripType = LEDStripType.GRB;
-        configAll.brightnessScalar = 0.1;
-        configAll.vBatOutputMode = VBatOutputMode.Modulated;
-        this.candle.configAllSettings(configAll, 100);
-        
+       // CANdleConfiguration configAll = new CANdleConfiguration();
+        // configAll.statusLedOffWhenActive = false;
+        // configAll.disableWhenLOS = false;
+        // configAll.stripType = LEDStripType.RGBW;
+        // configAll.brightnessScalar = 0.7;
+        // configAll.vBatOutputMode = VBatOutputMode.Modulated;
+        // this.candle.configAllSettings(configAll, 100);
+        //this.candle.configV5Enabled(true);
+
+
+    }
+
+
+    public void StartAnimation() {
+        candle.animate(currentAnimation);
+    }
+
+    public void StopAnimation(){
+        candle.animate(null);
+     //   candle.clearAnimation(0);
     }
 
     public void setColor(int r, int g, int b) {
@@ -43,15 +52,8 @@ public class LedSubsystem extends SubsystemBase {
 
     public void setColor(int r, int g, int b, int w, int startlid, int count) {
         candle.setLEDs(r, g, b, w, startlid, count);
-        
     }
-
-
-    @Override
-    public void periodic() {
-   //     setColor(255, 255, 255);
-
-  //      candle.animate(currentAnimation);
+    public void TurnOffLEDs(){
+        candle.setLEDs(0, 0, 0);
     }
-
 }

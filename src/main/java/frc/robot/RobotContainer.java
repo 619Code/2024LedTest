@@ -6,19 +6,19 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
-import frc.robot.commands.LedCommand;
-import frc.robot.subsystems.LedSubsystem;
+import frc.robot.commands.ledCommand;
+import frc.robot.subsystems.ledSubsystem;
 
 public class RobotContainer {
   //private ledSubsystem subsystem;
-  private LedSubsystem subsystem;
+  private ledSubsystem subsystem;
 
   public RobotContainer() {
-    subsystem = new LedSubsystem();
+    subsystem = new ledSubsystem();
     //controller = new XboxController(0);
 
     //subsystem.setDefualtCommand(new Limelight());
-    subsystem.setDefaultCommand(new LedCommand(subsystem));
+    subsystem.setDefaultCommand(new ledCommand(subsystem));
     configureBindings();
   }
 
