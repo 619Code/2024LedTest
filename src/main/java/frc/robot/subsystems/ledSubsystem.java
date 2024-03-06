@@ -16,20 +16,19 @@ import frc.robot.Constants;
 public class ledSubsystem extends SubsystemBase {
     
     private CANdle candle;
-    private final int ledCount = 96 * 4 + 8;
     private Animation currentAnimation = null;
 
 
   public ledSubsystem() {
-        this.candle = new CANdle(Constants.CANdleid);
-        currentAnimation = new ColorFlowAnimation(255, 0, 0, 0, 0.8, ledCount, Direction.Forward);
+        this.candle = new CANdle(Constants.LEDConstants.CANdleid);
+        currentAnimation = new ColorFlowAnimation(255, 0, 0, 0, 0.8, Constants.LEDConstants.ledCount, Direction.Forward);
 
         CANdleConfiguration configAll = new CANdleConfiguration();
         configAll.v5Enabled = true;
         configAll.statusLedOffWhenActive = false;
         configAll.disableWhenLOS = false;
         configAll.stripType = LEDStripType.RGB;
-        configAll.brightnessScalar = 0.3;
+        configAll.brightnessScalar = 1;
         configAll.vBatOutputMode = VBatOutputMode.Modulated;
         this.candle.configAllSettings(configAll, 100);
 

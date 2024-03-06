@@ -1,19 +1,26 @@
 package frc.robot.commands;
 
 
+import edu.wpi.first.wpilibj.util.Color;
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.commands.animations.CARAnimation;
+import frc.robot.commands.animations.NightRider;
+import frc.robot.commands.animations.FunnyAnimation;
 import frc.robot.subsystems.ledSubsystem;
 
 
 public class ledCommand extends Command {
     private ledSubsystem subsystem;
-    private boolean funny_mode = false;
+    
+
+    private CARAnimation currentAnimation;
 
     public ledCommand(ledSubsystem subsystem) {
         this.subsystem = subsystem;
         
         System.out.println("This was called");
 
+        currentAnimation = new NightRider(new Color(0, 0, 255), new Color(255, 0, 0), 50, 1, subsystem);
 
         addRequirements(subsystem);
 
@@ -27,25 +34,17 @@ public class ledCommand extends Command {
 
 
         //subsystem.StartAnimation();
+
+        currentAnimation.start();
+
     }
 
-    private int pos = 0;
 
     @Override
     public void execute(){
 
+        currentAnimation.update();
 
-        // subsystem.setColor(0, 0, 127, 0, 0, 400);
-
-        // subsystem.setColor(127, 0, 0, 0, pos, 10);
-        // pos += 1;
-        // if(pos > 400) {pos = 0;}
-
-        // if(funny_mode){
-        //     for(int i = 0; i < 400; i++){
-        //         subsystem.setColor((int)(Math.random() * 255), (int)(Math.random() * 255), (int)(Math.random() * 255), 0, i, 1);
-        //     }
-        // }
     }
     
     @Override 

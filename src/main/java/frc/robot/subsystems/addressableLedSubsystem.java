@@ -22,7 +22,7 @@ public class addressableLedSubsystem extends SubsystemBase {
         buffer = new AddressableLEDBuffer(108);
         ledStrip.setLength(buffer.getLength());
 
-        for (var i = 0; i < buffer.getLength(); i++) {
+        for (int i = 0; i < buffer.getLength(); i++) {
         //   Sets the specified LED to the RGB values for red
             buffer.setRGB(i, 255, 0, 0);
         }
