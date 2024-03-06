@@ -1,5 +1,6 @@
 package frc.robot.subsystems;
 
+//supercalifragilisticexpialidocious
 import com.ctre.phoenix.led.Animation;
 import com.ctre.phoenix.led.CANdle;
 import com.ctre.phoenix.led.CANdle.LEDStripType;
@@ -15,23 +16,22 @@ import frc.robot.Constants;
 public class ledSubsystem extends SubsystemBase {
     
     private CANdle candle;
-    private final int ledCount = 40;
+    private final int ledCount = 96 * 4 + 8;
     private Animation currentAnimation = null;
 
 
   public ledSubsystem() {
         this.candle = new CANdle(Constants.CANdleid);
-        currentAnimation = new ColorFlowAnimation(255, 0, 0, 255, 0.5, ledCount, Direction.Forward);
-   
+        currentAnimation = new ColorFlowAnimation(255, 0, 0, 0, 0.8, ledCount, Direction.Forward);
 
-       // CANdleConfiguration configAll = new CANdleConfiguration();
-        // configAll.statusLedOffWhenActive = false;
-        // configAll.disableWhenLOS = false;
-        // configAll.stripType = LEDStripType.RGBW;
-        // configAll.brightnessScalar = 0.7;
-        // configAll.vBatOutputMode = VBatOutputMode.Modulated;
-        // this.candle.configAllSettings(configAll, 100);
-        //this.candle.configV5Enabled(true);
+        CANdleConfiguration configAll = new CANdleConfiguration();
+        configAll.v5Enabled = true;
+        configAll.statusLedOffWhenActive = false;
+        configAll.disableWhenLOS = false;
+        configAll.stripType = LEDStripType.RGB;
+        configAll.brightnessScalar = 0.3;
+        configAll.vBatOutputMode = VBatOutputMode.Modulated;
+        this.candle.configAllSettings(configAll, 100);
 
 
     }
