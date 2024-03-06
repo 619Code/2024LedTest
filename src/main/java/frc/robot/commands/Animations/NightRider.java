@@ -40,7 +40,7 @@ public class NightRider implements CARAnimation{
         if(pos >= Constants.LEDConstants.ledCount - lengthOfForeground){
             pos = Constants.LEDConstants.ledCount - lengthOfForeground;
             dir *= -1;
-        }
+        
         if(pos < 0){
             pos = 0;
             dir *= -1;
